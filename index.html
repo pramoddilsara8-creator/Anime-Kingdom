@@ -3,32 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnimeStream - Netflix Style</title>
+    <title>Anime Kingdom</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <div class="logo">ANIME<span>STREAM</span></div>
-    </nav>
+    <header>
+        <div class="logo">Anime <span>Kingdom</span></div>
+        <div class="search-bar"><input type="text" placeholder="Search Anime..."></div>
+    </header>
 
-    <div class="container">
-        <h1>Trending Now</h1>
-        <div class="anime-grid" id="animeGrid">
-            <!-- ඇනිමේ කාඩ්පත් මෙහි දිස්වනු ඇත -->
-        </div>
-    </div>
+    <main class="container">
+        <h2 class="section-title">Latest Updates</h2>
+        <div class="anime-grid" id="animeGrid"></div>
+    </main>
 
     <!-- Modal for Seasons & Episodes -->
     <div id="animeModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 id="modalTitle">Anime Name</h2>
-            <div class="season-selector">
-                <label>Select Season:</label>
-                <select id="seasonSelect" onchange="loadEpisodes()"></select>
-            </div>
-            <div class="episode-list" id="episodeList">
-                <!-- Episodes මෙහි දිස්වනු ඇත -->
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                <div class="modal-info">
+                    <h2 id="modalTitle"></h2>
+                    <div class="selector-wrapper">
+                        <select id="seasonSelect" onchange="loadEpisodes()"></select>
+                    </div>
+                </div>
+                <div class="episode-list" id="episodeList"></div>
             </div>
         </div>
     </div>
