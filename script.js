@@ -1,66 +1,105 @@
-// ඇනිමේ දත්ත ගබඩාව (මෙහි ඇනිමේ 20ක් දක්වා ඇතුළත් කරන්න)
-const animeData = [
-    {
-        id: 1,
-        title: "Naruto Shippuden",
-        image: "https://via.placeholder.com", // පින්තූරයේ URL එක මෙතනට දාන්න
-        seasons: {
-            "Season 1": ["Episode 1: Homecoming", "Episode 2: The Akatsuki Makes Its Move"],
-            "Season 2": ["Episode 3: Results of Training", "Episode 4: The Jinchuriki of the Sand"]
-        }
-    },
-    {
-        id: 2,
-        title: "One Piece",
-        image: "https://via.placeholder.com",
-        seasons: {
-            "Season 1": ["Episode 1: I'm Luffy!", "Episode 2: Enter the Great Swordsman"],
-            "Season 2": ["Episode 62: The First Obstacle?"]
-        }
-    }
-];
-
-const animeGrid = document.getElementById('animeGrid');
-const modal = document.getElementById('animeModal');
-let currentAnime = null;
-
-// ඇනිමේ ලැයිස්තුව screen එකට දැමීම
-animeData.forEach(anime => {
-    const card = document.createElement('div');
-    card.className = 'anime-card';
-    card.innerHTML = `<img src="${anime.image}"><h3>${anime.title}</h3>`;
-    card.onclick = () => openAnime(anime);
-    animeGrid.appendChild(card);
-});
-
-function openAnime(anime) {
-    currentAnime = anime;
-    document.getElementById('modalTitle').innerText = anime.title;
-    const seasonSelect = document.getElementById('seasonSelect');
-    seasonSelect.innerHTML = "";
-    
-    Object.keys(anime.seasons).forEach(season => {
-        const opt = document.createElement('option');
-        opt.value = season;
-        opt.innerHTML = season;
-        seasonSelect.appendChild(opt);
-    });
-
-    loadEpisodes();
-    modal.style.display = "block";
+:root {
+    --primary: #ffdd95; /* AniLab Style Gold/Yellow */
+    --bg: #0f1014;
+    --card-bg: #1a1c22;
 }
 
-function loadEpisodes() {
-    const season = document.getElementById('seasonSelect').value;
-    const list = document.getElementById('episodeList');
-    list.innerHTML = "";
-    
-    currentAnime.seasons[season].forEach(ep => {
-        const div = document.createElement('div');
-        div.className = 'episode-item';
-        div.innerText = ep;
-        list.appendChild(div);
-    });
+body {
+    background-color: var(--bg);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
 }
 
-document.querySelector('.close').onclick = () => modal.style.display = "none";
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: rgba(15, 16, 20, 0.95);
+    border-bottom: 1px solid #222;
+}
+
+.logo { font-size: 24px; font-weight: 600; color: #fff; }
+.logo span { color: var(--primary); }
+
+.container { padding: 20px 5%; }
+.section-title { font-size: 18px; margin-bottom: 20px; border-left: 4px solid var(--primary); padding-left: 10px; }
+
+/* Anime Grid */
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+}
+
+.anime-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+}
+
+.anime-card:hover { transform: translateY(-5px); }
+
+.anime-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.anime-card .info {
+    padding: 10px;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--bg);
+    margin: 10% auto;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.modal-body { padding: 20px; }
+
+#seasonSelect {
+    width: 100%;
+    background: #222;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--primary);
+    margin: 15px 0;
+}
+
+.episode-item {
+    background: #1a1c22;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    border-left: 3px solid transparent;
+}
+
+.episode-item:hover { border-left-color: var(--primary); background: #252830; }
+
+.close { float: right; font-size: 25px; cursor: pointer; color: var(--primary); }
