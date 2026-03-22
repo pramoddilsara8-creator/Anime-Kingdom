@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Kingdom - Stream TV Series</title>
+    <style>
+        /* HiAnime Style CSS */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #121212; color: #fff; margin: 0; padding: 0; }
+        header { background-color: #1a1a1a; padding: 15px; border-bottom: 2px solid #ff8c00; text-align: center; }
+        .logo { color: #ff8c00; font-size: 24px; font-weight: bold; text-decoration: none; }
+        
+        /* Hero Section */
+        .hero { padding: 20px; text-align: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com'); background-size: cover; }
+        
+        /* Series Grid */
+        .container { padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
+        .card { background: #1a1a1a; border-radius: 8px; overflow: hidden; transition: 0.3s; border: 1px solid #333; }
+        .card:hover { transform: scale(1.05); border-color: #ff8c00; }
+        .card img { width: 100%; height: 220px; object-fit: cover; }
+        .card-info { padding: 10px; text-align: center; }
+        .card-title { font-size: 14px; margin: 5px 0; color: #eee; text-decoration: none; display: block; }
+        
+        /* Video Player Section */
+        .player-container { max-width: 800px; margin: 20px auto; background: #000; border: 2px solid #ff8c00; }
+        iframe { width: 100%; aspect-ratio: 16/9; border: none; }
+        
+        .footer { text-align: center; padding: 20px; color: #777; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">ANIME KINGDOM</a>
+    </header>
+
+    <div class="hero">
+        <h1>නවතම TV Series නරඹන්න</h1>
+        <p>HiAnime අත්දැකීම දැන් සිංහලෙන්</p>
+    </div>
+
+    <!-- මෙතැනට වීඩියෝ එකේ Link එක දාන්න (Embed Link) -->
+    <div class="player-container">
+        <iframe src="https://www.youtube.com" allowfullscreen></iframe>
+    </div>
+
+    <div class="container">
+        <!-- Series Card 1 -->
+        <div class="card">
+            <img src="https://via.placeholder.com" alt="Series 1">
+            <div class="card-info">
+                <a href="#" class="card-title">Series Name 01</a>
+            </div>
+        </div>
+
+        <!-- Series Card 2 -->
+        <div class="card">
+            <img src="https://via.placeholder.com" alt="Series 2">
+            <div class="card-info">
+                <a href="#" class="card-title">Series Name 02</a>
+            </div>
+        </div>
+        
+        <!-- තවත් Series මෙලෙස එකතු කරන්න -->
+    </div>
+
+    <div class="footer">
+        © 2026 Anime Kingdom - Built with Phone
+    </div>
+
+</body>
+</html>
